@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
-import Container from "./Container";
 import { Box } from "@mui/material";
+import Container from "./Container";
+import Header from "./Header";
 
 type Props = {
   isOpened?: boolean;
@@ -20,7 +21,9 @@ export default function Conversation({ isOpened }: Props) {
         opacity,
       }}
     >
-      <Container></Container>
+      <Container>
+        <Header />
+      </Container>
     </Box>
   );
 }

@@ -4,8 +4,6 @@ import styled from "@emotion/styled";
 const Container = styled("div")(() => {
   return {
     display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
     height: "450px",
     width: "350px",
     borderRadius: "16px",
