@@ -9,7 +9,7 @@ const Container = styled("div")(() => {
     height: "60px",
     width: "60px",
     borderRadius: "50%",
-    backgroundColor: "#ff5c35",
+    backgroundColor: "rgb(46, 71, 93);",
   };
 });
 

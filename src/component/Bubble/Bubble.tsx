@@ -4,7 +4,7 @@ import Button from "./Button";
 export default function Bubble() {
   return (
     <div>
-      <Button />
+      <Button isOpened />
     </div>
   );
 }
