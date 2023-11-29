@@ -9,6 +9,7 @@ const Container = styled("div")(() => {
     borderTopLeftRadius: "16px",
     borderTopRightRadius: "16px",
     backgroundColor: "rgb(46, 71, 93)",
+    padding: "10px",
   };
 });
 
