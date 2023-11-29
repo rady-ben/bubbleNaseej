@@ -10,29 +10,31 @@ type Props = {
 
 export default function Button({ isOpened, onClick }: Props) {
   const [chatIconVisible, setChatIconOpacity] = useState(isOpened ? 0 : 1);
+  const [rotationAngle, setRotationAngle] = useState(0);
 
   useEffect(() => {
     setChatIconOpacity(isOpened ? 0 : 1);
+    setRotationAngle(isOpened ? 45 : 0);
   }, [isOpened]);
 
   return (
-    <div>
-      <Container onClick={onClick}>
-        <ChatIcon
-          sx={{
-            opacity: chatIconVisible,
-            transition: "opacity 0.3s ease-in",
-            position: "absolute",
-          }}
-        />
-        <CloseIcon
-          sx={{
-            opacity: chatIconVisible === 0 ? 1 : 0,
-            transition: "opacity 0.3s ease-in",
-            position: "absolute",
-          }}
-        />
-      </Container>
-    </div>
+    <Container onClick={onClick}>
+      <ChatIcon
+        sx={{
+          opacity: chatIconVisible,
+          transition: "all 0.3s ease-in",
+          transform: `rotate(${rotationAngle}deg)`,
+          position: "absolute",
+        }}
+      />
+      <CloseIcon
+        sx={{
+          opacity: chatIconVisible === 0 ? 1 : 0,
+          transition: "all 0.3s ease-in",
+          transform: `rotate(${rotationAngle + 45}deg)`,
+          position: "absolute",
+        }}
+      />
+    </Container>
   );
 }
