@@ -9,7 +9,7 @@ export default function Bubble() {
   const toggle = () => setIsOpened(!isOpened);
   return (
     <Box display="flex" flexDirection="column" alignItems="flex-end">
-      <Conversation />
+      <Conversation isOpened={isOpened} />
       <Box mt={2}>
         <Button isOpened={isOpened} onClick={toggle} />
       </Box>
