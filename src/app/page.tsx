@@ -10,7 +10,7 @@ export default function Home() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        backgroundColor: "#fff",
+        backgroundColor: "#E1E1E1",
       }}
     >
       <Bubble />
