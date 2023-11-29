@@ -5,13 +5,14 @@ import CloseIcon from "@mui/icons-material/Close";
 
 type Props = {
   isOpened?: boolean;
+  onClick: () => void;
 };
 
-export default function Button({ isOpened }: Props) {
+export default function Button({ isOpened, onClick }: Props) {
   const Icon = isOpened ? CloseIcon : ChatIcon;
 
   return (
-    <Container>
+    <Container onClick={onClick}>
       <Icon sx={{ color: "white" }} />
     </Container>
   );
