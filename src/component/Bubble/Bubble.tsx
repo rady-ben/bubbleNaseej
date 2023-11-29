@@ -1,13 +1,18 @@
 "use client";
 import React, { useState } from "react";
+import { Box } from "@mui/material";
 import Button from "./Button";
+import Conversation from "./Conversation";
 
 export default function Bubble() {
   const [isOpened, setIsOpened] = useState(false);
   const toggle = () => setIsOpened(!isOpened);
   return (
-    <div>
-      <Button isOpened={isOpened} onClick={toggle} />
-    </div>
+    <Box display="flex" flexDirection="column" alignItems="flex-end">
+      <Conversation />
+      <Box mt={2}>
+        <Button isOpened={isOpened} onClick={toggle} />
+      </Box>
+    </Box>
   );
 }
