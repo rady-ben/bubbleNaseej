@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Container from "./Container";
 import ChatIcon from "@mui/icons-material/Chat";
 import CloseIcon from "@mui/icons-material/Close";
@@ -9,8 +9,17 @@ type Props = {
 };
 
 export default function Button({ isOpened, onClick }: Props) {
-  const [chatIconOpacity, setChatIconOpacity] = useState(0);
-  const [closeIconOpacity, setCloseIconOpacity] = useState(1);
+  const [chatIconOpacity, setChatIconOpacity] = useState(isOpened ? 0 : 1);
+  const [closeIconOpacity, setCloseIconOpacity] = useState(isOpened ? 1 : 0);
+
+  useEffect(() => {
+    switchIcons();
+  }, [isOpened]);
+
+  const switchIcons = () => {
+    setChatIconOpacity(isOpened ? 0 : 1);
+    setCloseIconOpacity(isOpened ? 1 : 0);
+  };
 
   return (
     <div>
@@ -30,14 +39,6 @@ export default function Button({ isOpened, onClick }: Props) {
           }}
         />
       </Container>
-      <button
-        onClick={() => {
-          setChatIconOpacity(!chatIconOpacity ? 1 : 0);
-          setCloseIconOpacity(!closeIconOpacity ? 1 : 0);
-        }}
-      >
-        tap
-      </button>
     </div>
   );
 }
