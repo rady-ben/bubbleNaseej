@@ -9,7 +9,7 @@ type Props = {
 };
 
 export default function Button({ isOpened, onClick }: Props) {
-  const [chatIconOpacity, setChatIconOpacity] = useState(isOpened ? 0 : 1);
+  const [chatIconVisible, setChatIconOpacity] = useState(isOpened ? 0 : 1);
 
   useEffect(() => {
     setChatIconOpacity(isOpened ? 0 : 1);
@@ -20,14 +20,14 @@ export default function Button({ isOpened, onClick }: Props) {
       <Container onClick={onClick}>
         <ChatIcon
           sx={{
-            opacity: chatIconOpacity,
+            opacity: chatIconVisible,
             transition: "opacity 0.3s ease-in",
             position: "absolute",
           }}
         />
         <CloseIcon
           sx={{
-            opacity: chatIconOpacity === 0 ? 1 : 0,
+            opacity: chatIconVisible === 0 ? 1 : 0,
             transition: "opacity 0.3s ease-in",
             position: "absolute",
           }}
