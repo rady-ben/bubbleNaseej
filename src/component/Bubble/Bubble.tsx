@@ -1,15 +1,10 @@
 import React from "react";
+import Button from "./Button";
 
 export default function Bubble() {
   return (
     <div>
-      <p
-        style={{
-          color: "#000",
-        }}
-      >
-        radhouane benbrahim
-      </p>
+      <Button />
     </div>
   );
 }
