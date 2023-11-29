@@ -10,16 +10,10 @@ type Props = {
 
 export default function Button({ isOpened, onClick }: Props) {
   const [chatIconOpacity, setChatIconOpacity] = useState(isOpened ? 0 : 1);
-  const [closeIconOpacity, setCloseIconOpacity] = useState(isOpened ? 1 : 0);
 
   useEffect(() => {
-    switchIcons();
-  }, [isOpened]);
-
-  const switchIcons = () => {
     setChatIconOpacity(isOpened ? 0 : 1);
-    setCloseIconOpacity(isOpened ? 1 : 0);
-  };
+  }, [isOpened]);
 
   return (
     <div>
@@ -33,7 +27,7 @@ export default function Button({ isOpened, onClick }: Props) {
         />
         <CloseIcon
           sx={{
-            opacity: closeIconOpacity,
+            opacity: chatIconOpacity === 0 ? 1 : 0,
             transition: "opacity 0.3s ease-in",
             position: "absolute",
           }}
