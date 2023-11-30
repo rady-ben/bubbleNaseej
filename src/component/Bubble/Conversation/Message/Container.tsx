@@ -4,10 +4,13 @@ import styled from "@emotion/styled";
 
 type Props = React.HTMLAttributes<HTMLSpanElement> & {
   isMine?: boolean;
+  accentColor?: string;
 };
 
-const Container = styled("span")(({ isMine }: Props) => {
-  const backgroundColor = isMine ? "rgb(46, 71, 93)" : "rgb(234, 240, 246)";
+const Container = styled("span")(({ isMine, accentColor }: Props) => {
+  const backgroundColor = isMine
+    ? accentColor || "rgb(46, 71, 93)"
+    : "rgb(234, 240, 246)";
   return {
     display: "inline-block",
     minWidth: "100px",

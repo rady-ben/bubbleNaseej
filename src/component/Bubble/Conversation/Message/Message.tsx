@@ -5,9 +5,10 @@ import Text from "../../Text";
 
 type Props = {
   isMine?: boolean;
+  accentColor?: string;
 };
 
-export default function Message({ isMine }: Props) {
+export default function Message({ isMine, accentColor }: Props) {
   const justifyContent = isMine ? "flex-end" : "flex-start";
   const textVariant = isMine ? "message" : "response";
   return (
@@ -19,7 +20,7 @@ export default function Message({ isMine }: Props) {
       pl="16px"
       pr="16px"
     >
-      <Container isMine={isMine}>
+      <Container isMine={isMine} accentColor={accentColor}>
         <Text textVariant={textVariant}>Hello, I am a message, Hello</Text>
       </Container>
     </Box>
