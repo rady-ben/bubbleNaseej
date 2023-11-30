@@ -6,9 +6,10 @@ import CloseIcon from "@mui/icons-material/Close";
 type Props = {
   isOpened?: boolean;
   onClick: () => void;
+  accentColor?: string;
 };
 
-export default function Button({ isOpened, onClick }: Props) {
+export default function Button({ isOpened, onClick, accentColor }: Props) {
   const [chatIconVisible, setChatIconOpacity] = useState(isOpened ? 0 : 1);
   const [rotationAngle, setRotationAngle] = useState(0);
 
@@ -18,7 +19,7 @@ export default function Button({ isOpened, onClick }: Props) {
   }, [isOpened]);
 
   return (
-    <Container onClick={onClick}>
+    <Container onClick={onClick} accentColor={accentColor}>
       <ChatIcon
         sx={{
           opacity: chatIconVisible,
