@@ -6,7 +6,6 @@ const Container = styled("span")(() => {
     display: "inline-block",
     minWidth: "100px",
     paddingTop: "8px",
-    marginTop: "8px",
     paddingBottom: "8px",
     paddingLeft: "16px",
     paddingRight: "16px",

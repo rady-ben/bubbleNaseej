@@ -1,11 +1,26 @@
 import React from "react";
+import { Box } from "@mui/material";
 import Container from "./Container";
 import Text from "../../Text";
 
-export default function Message() {
+type Props = {
+  isMine?: boolean;
+};
+
+export default function Message({ isMine }: Props) {
+  const justifyContent = isMine ? "flex-end" : "flex-start";
   return (
-    <Container>
-      <Text textVariant="message">Hello, I am a message, Hello</Text>
-    </Container>
+    <Box
+      width="100%"
+      display="flex"
+      justifyContent={justifyContent}
+      pt="16px"
+      pl="16px"
+      pr="16px"
+    >
+      <Container>
+        <Text textVariant="message">Hello, I am a message, Hello</Text>
+      </Container>
+    </Box>
   );
 }
