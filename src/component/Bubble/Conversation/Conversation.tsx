@@ -32,7 +32,9 @@ export default function Conversation({
     >
       <Container>
         <Header accentColor={accentColor} title={title} icon={icon} />
-        <Message />
+        <Box pt="8px" pb="8px" pl="16px" pr="16px">
+          <Message />
+        </Box>
       </Container>
     </Box>
   );
