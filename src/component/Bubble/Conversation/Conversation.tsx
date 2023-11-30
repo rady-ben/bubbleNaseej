@@ -6,9 +6,10 @@ import Header from "./Header";
 type Props = {
   isOpened?: boolean;
   accentColor?: string;
+  title: string;
 };
 
-export default function Conversation({ isOpened, accentColor }: Props) {
+export default function Conversation({ isOpened, accentColor, title }: Props) {
   const [opacity, setOpacity] = useState(isOpened ? 1 : 0);
 
   useEffect(() => {
@@ -23,7 +24,7 @@ export default function Conversation({ isOpened, accentColor }: Props) {
       }}
     >
       <Container>
-        <Header accentColor={accentColor} />
+        <Header accentColor={accentColor} title={title} />
       </Container>
     </Box>
   );

@@ -13,7 +13,7 @@ export default function Home() {
         backgroundColor: "#E1E1E1",
       }}
     >
-      <Bubble />
+      <Bubble title="Naseej" />
     </main>
   );
 }

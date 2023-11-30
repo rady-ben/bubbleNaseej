@@ -6,14 +6,19 @@ import Conversation from "./Conversation";
 
 type Props = {
   accentColor?: string;
+  title: string;
 };
 
-export default function Bubble({ accentColor }: Props) {
+export default function Bubble({ accentColor, title }: Props) {
   const [isOpened, setIsOpened] = useState(false);
   const toggle = () => setIsOpened(!isOpened);
   return (
     <Box display="flex" flexDirection="column" alignItems="flex-end">
-      <Conversation isOpened={isOpened} accentColor={accentColor} />
+      <Conversation
+        isOpened={isOpened}
+        accentColor={accentColor}
+        title={title}
+      />
       <Box mt={2}>
         <Button
           isOpened={isOpened}

@@ -7,9 +7,10 @@ import Text from "../../Text";
 
 type Props = {
   accentColor?: string;
+  title: string;
 };
 
-export default function Header({ accentColor }: Props) {
+export default function Header({ accentColor, title }: Props) {
   return (
     <Container accentColor={accentColor}>
       <Avatar icon={<FaceIcon sx={{ color: "#ff5c35" }} />} />
@@ -20,7 +21,7 @@ export default function Header({ accentColor }: Props) {
         alignItems="center"
         ml="10px"
       >
-        <Text textVariant="title">Naseej</Text>
+        <Text textVariant="title">{title || "Title"}</Text>
       </Box>
     </Container>
   );
