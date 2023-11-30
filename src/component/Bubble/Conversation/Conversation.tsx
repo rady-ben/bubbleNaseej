@@ -8,7 +8,7 @@ type Props = {
 };
 
 export default function Conversation({ isOpened }: Props) {
-  const [opacity, setOpacity] = useState(1);
+  const [opacity, setOpacity] = useState(isOpened ? 1 : 0);
 
   useEffect(() => {
     setOpacity(isOpened ? 1 : 0);
