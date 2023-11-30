@@ -1,5 +1,6 @@
 import React from "react";
 import Bubble from "@/component/Bubble";
+import FaceIcon from "@mui/icons-material/Face";
 
 export default function Home() {
   return (
@@ -13,7 +14,7 @@ export default function Home() {
         backgroundColor: "#E1E1E1",
       }}
     >
-      <Bubble title="Naseej" />
+      <Bubble title="Naseej" icon={<FaceIcon />} />
     </main>
   );
 }

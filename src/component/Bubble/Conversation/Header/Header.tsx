@@ -1,19 +1,20 @@
-import React from "react";
-import FaceIcon from "@mui/icons-material/Face";
+import React, { ReactNode } from "react";
+import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import { Box } from "@mui/material";
 import Container from "./Container";
 import Avatar from "./Avatar";
 import Text from "../../Text";
 
 type Props = {
-  accentColor?: string;
   title: string;
+  accentColor?: string;
+  icon?: ReactNode;
 };
 
-export default function Header({ accentColor, title }: Props) {
+export default function Header({ accentColor, title, icon }: Props) {
   return (
     <Container accentColor={accentColor}>
-      <Avatar icon={<FaceIcon sx={{ color: "#ff5c35" }} />} />
+      <Avatar icon={icon || <AccountCircleIcon sx={{ color: "#ff5c35" }} />} />
       <Box
         height="40px"
         display="flex"

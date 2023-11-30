@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { ReactNode, useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import Container from "./Container";
 import Header from "./Header";
@@ -7,9 +7,15 @@ type Props = {
   isOpened?: boolean;
   accentColor?: string;
   title: string;
+  icon?: ReactNode;
 };
 
-export default function Conversation({ isOpened, accentColor, title }: Props) {
+export default function Conversation({
+  isOpened,
+  accentColor,
+  title,
+  icon,
+}: Props) {
   const [opacity, setOpacity] = useState(isOpened ? 1 : 0);
 
   useEffect(() => {
@@ -24,7 +30,7 @@ export default function Conversation({ isOpened, accentColor, title }: Props) {
       }}
     >
       <Container>
-        <Header accentColor={accentColor} title={title} />
+        <Header accentColor={accentColor} title={title} icon={icon} />
       </Container>
     </Box>
   );
