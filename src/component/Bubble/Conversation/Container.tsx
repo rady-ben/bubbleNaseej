@@ -3,7 +3,6 @@ import styled from "@emotion/styled";
 
 const Container = styled("div")(() => {
   return {
-    display: "flex",
     height: "450px",
     width: "350px",
     borderRadius: "16px",

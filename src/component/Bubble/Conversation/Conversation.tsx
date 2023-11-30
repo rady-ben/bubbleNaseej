@@ -2,6 +2,7 @@ import React, { ReactNode, useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import Container from "./Container";
 import Header from "./Header";
+import Message from "./Message";
 
 type Props = {
   isOpened?: boolean;
@@ -31,6 +32,7 @@ export default function Conversation({
     >
       <Container>
         <Header accentColor={accentColor} title={title} icon={icon} />
+        <Message />
       </Container>
     </Box>
   );
