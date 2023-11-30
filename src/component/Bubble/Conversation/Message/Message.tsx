@@ -9,6 +9,7 @@ type Props = {
 
 export default function Message({ isMine }: Props) {
   const justifyContent = isMine ? "flex-end" : "flex-start";
+  const textVariant = isMine ? "message" : "response";
   return (
     <Box
       width="100%"
@@ -19,7 +20,7 @@ export default function Message({ isMine }: Props) {
       pr="16px"
     >
       <Container isMine={isMine}>
-        <Text textVariant="message">Hello, I am a message, Hello</Text>
+        <Text textVariant={textVariant}>Hello, I am a message, Hello</Text>
       </Container>
     </Box>
   );

@@ -16,6 +16,15 @@ const Text = styled.span<TextProps>(({ textVariant }) => {
     };
   }
 
+  if (textVariant === "message") {
+    return {
+      fontSize: "16px",
+      fontWeight: 400,
+      fontFamily: "Helvetica",
+      color: "#fff",
+    };
+  }
+
   return {
     fontSize: "16px",
     fontWeight: 400,
