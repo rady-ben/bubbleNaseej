@@ -14,7 +14,11 @@ export default function Home() {
         backgroundColor: "#E1E1E1",
       }}
     >
-      <Bubble title="Naseej" icon={<FaceIcon />} />
+      <Bubble
+        title="Naseej"
+        icon={<FaceIcon />}
+        accentColor="rgb(46, 71, 93)"
+      />
     </main>
   );
 }
