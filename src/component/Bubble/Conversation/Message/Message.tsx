@@ -18,7 +18,7 @@ export default function Message({ isMine }: Props) {
       pl="16px"
       pr="16px"
     >
-      <Container>
+      <Container isMine={isMine}>
         <Text textVariant="message">Hello, I am a message, Hello</Text>
       </Container>
     </Box>
