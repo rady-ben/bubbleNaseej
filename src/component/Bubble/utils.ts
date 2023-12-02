@@ -1,5 +1,4 @@
-type LangType = "en" | "ar";
-type DirectionType = "ltr" | "rtl";
+import type { LangType, DirectionType } from "./Context";
 
 const defualtLang = "en";
 const validLangs = ["en", "ar"];
