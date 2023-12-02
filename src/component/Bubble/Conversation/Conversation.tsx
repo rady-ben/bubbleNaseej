@@ -1,10 +1,11 @@
-import React, { ReactNode, useState, useEffect } from "react";
+import React, { ReactNode, useState, useEffect, useContext } from "react";
 import { Box, TextField } from "@mui/material";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import MicIcon from "@mui/icons-material/Mic";
 import Container from "./Container";
 import Header from "./Header";
 import Message from "./Message";
+import Context from "../Context";
 
 type Props = {
   isOpened?: boolean;
@@ -20,6 +21,7 @@ export default function Conversation({
   icon,
 }: Props) {
   const [opacity, setOpacity] = useState(isOpened ? 1 : 0);
+  const { direction } = useContext(Context);
 
   useEffect(() => {
     setOpacity(isOpened ? 1 : 0);
@@ -41,7 +43,7 @@ export default function Conversation({
           </Box>
           <Box
             display="flex"
-            flexDirection="row"
+            flexDirection={direction === "ltr" ? "row" : "row-reverse"}
             alignItems="flex-end"
             p="16px"
           >
@@ -56,7 +58,11 @@ export default function Conversation({
               <InsertPhotoIcon
                 sx={{ color: accentColor, fontSize: "25px", cursor: "pointer" }}
               />
-              <Box ml="8px" pt="4px">
+              <Box
+                ml={direction === "ltr" ? "8px" : "0px"}
+                mr={direction === "rtl" ? "8px" : "0px"}
+                pt="5px"
+              >
                 <MicIcon sx={{ color: accentColor, cursor: "pointer" }} />
               </Box>
             </Box>
