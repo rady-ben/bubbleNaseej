@@ -1,8 +1,10 @@
 import React from "react";
 
+type LangType = "en" | "ar";
+
 type ContextType = {
   accentColor?: string;
-  lang?: string;
+  lang?: LangType;
   direction?: string;
 };
 
@@ -16,3 +18,4 @@ const Context = React.createContext(defaultValue);
 
 export default Context;
 export { defaultValue };
+export type { ContextType, LangType };

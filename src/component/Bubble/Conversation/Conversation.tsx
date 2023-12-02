@@ -7,7 +7,7 @@ import Message from "./Message";
 type Props = {
   isOpened?: boolean;
   accentColor?: string;
-  title: string;
+  title?: string;
   icon?: ReactNode;
 };
 

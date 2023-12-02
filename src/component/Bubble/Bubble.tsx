@@ -3,19 +3,21 @@ import React, { ReactNode, useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import Button from "./Button";
 import Conversation from "./Conversation";
-import Context, { defaultValue } from "./context";
+import Context, { defaultValue } from "./Context";
+import { LangType } from "./Context";
+import getLanguageCode from "./utils";
 
 type Props = {
   accentColor?: string;
-  title: string;
+  title?: string;
   icon?: ReactNode;
 };
 
 export default function Bubble({ accentColor, title, icon }: Props) {
   const [isOpened, setIsOpened] = useState(false);
-  const [lang, setLanguage] = useState("en");
+  const [lang, setLanguage] = useState<LangType>("en");
   useEffect(() => {
-    setLanguage(navigator.language?.substring(0, 2) || "en");
+    setLanguage(getLanguageCode(navigator.language) || "en");
   }, []);
 
   const toggle = () => setIsOpened(!isOpened);
