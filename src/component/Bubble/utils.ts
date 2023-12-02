@@ -1,12 +1,21 @@
 type LangType = "en" | "ar";
+type DirectionType = "ltr" | "rtl";
+
+const defualtLang = "en";
+const validLangs = ["en", "ar"];
+const rtlLangs = ["ar"];
 
 function getLanguageCode(input: string): LangType {
-  const validLangs = ["en", "ar"];
   const firstTwoLetters = input.substring(0, 2);
   if (validLangs.includes(firstTwoLetters)) {
     return firstTwoLetters as LangType;
   }
-  return "en";
+  return defualtLang;
 }
 
-export default getLanguageCode;
+const getDirectionFromLanguage = (lang: string): DirectionType => {
+  return rtlLangs.includes(lang) ? "rtl" : "ltr";
+};
+
+export { getLanguageCode, getDirectionFromLanguage };
+export type { DirectionType };

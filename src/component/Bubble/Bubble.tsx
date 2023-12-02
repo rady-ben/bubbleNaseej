@@ -5,7 +5,11 @@ import Button from "./Button";
 import Conversation from "./Conversation";
 import Context, { defaultValue } from "./Context";
 import { LangType } from "./Context";
-import getLanguageCode from "./utils";
+import {
+  getLanguageCode,
+  getDirectionFromLanguage,
+  DirectionType,
+} from "./utils";
 
 type Props = {
   accentColor?: string;
@@ -16,8 +20,11 @@ type Props = {
 export default function Bubble({ accentColor, title, icon }: Props) {
   const [isOpened, setIsOpened] = useState(false);
   const [lang, setLanguage] = useState<LangType>("en");
+  const [direction, setDirection] = useState<DirectionType>("ltr");
+
   useEffect(() => {
     setLanguage(getLanguageCode(navigator.language) || "en");
+    setDirection(getDirectionFromLanguage(navigator.language) || "ltr");
   }, []);
 
   const toggle = () => setIsOpened(!isOpened);
@@ -26,6 +33,7 @@ export default function Bubble({ accentColor, title, icon }: Props) {
       value={{
         accentColor: accentColor || defaultValue.accentColor,
         lang: lang || defaultValue.lang,
+        direction: direction || defaultValue.direction,
       }}
     >
       <Box display="flex" flexDirection="column" alignItems="flex-end">
