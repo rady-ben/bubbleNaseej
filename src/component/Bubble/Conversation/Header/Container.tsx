@@ -1,13 +1,17 @@
 "use client";
+import React, { useContext } from "react";
 import styled from "@emotion/styled";
+import Context from "../../Context";
 
 type Props = React.HTMLAttributes<HTMLDivElement> & {
   accentColor?: string;
 };
 
 const Container = styled("div")(({ accentColor }: Props) => {
+  const { direction } = useContext(Context);
   return {
     display: "flex",
+    flexDirection: direction === "ltr" ? "row" : "row-reverse",
     height: "60px",
     width: "100%",
     borderTopLeftRadius: "16px",

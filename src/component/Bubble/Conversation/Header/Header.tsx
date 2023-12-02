@@ -14,7 +14,7 @@ type Props = {
 };
 
 export default function Header({ accentColor, title, icon }: Props) {
-  const { lang } = useContext(Context);
+  const { lang, direction } = useContext(Context);
   return (
     <Container accentColor={accentColor}>
       <Avatar icon={icon || <AccountCircleIcon sx={{ color: "#ff5c35" }} />} />
@@ -23,7 +23,8 @@ export default function Header({ accentColor, title, icon }: Props) {
         display="flex"
         justifyContent="center"
         alignItems="center"
-        ml="10px"
+        ml={direction === "ltr" ? "10px" : "0px"}
+        mr={direction === "rtl" ? "10px" : "0px"}
       >
         <Text textVariant="title">
           {title || CONTENT[lang as LangType].NASEEJ}
