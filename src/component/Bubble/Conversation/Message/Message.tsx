@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Box } from "@mui/material";
 import Container from "./Container";
 import Text from "../../Text";
+import Context from "../../Context";
 
 type Props = {
   isMine?: boolean;
@@ -9,8 +10,14 @@ type Props = {
 };
 
 export default function Message({ isMine, accentColor }: Props) {
-  const justifyContent = isMine ? "flex-end" : "flex-start";
   const textVariant = isMine ? "message" : "response";
+  const { direction } = useContext(Context);
+  let justifyContent = "flex-start";
+  if (direction === "rtl") {
+    justifyContent = isMine ? "flex-start" : "flex-end";
+  } else {
+    justifyContent = isMine ? "flex-end" : "flex-start";
+  }
   return (
     <Box
       width="100%"
