@@ -41,7 +41,16 @@ export default function Bubble({ accentColor, title, icon }: Props) {
         direction: direction || defaultValue.direction,
       }}
     >
-      <Box display="flex" flexDirection="column" alignItems="flex-end">
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          [`@media (max-width: 768px)`]: {
+            height: "100%",
+            justifyContent: "flex-end",
+          },
+        }}
+      >
         <Conversation
           isOpened={isOpened}
           accentColor={accentColor}

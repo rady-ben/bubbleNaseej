@@ -9,6 +9,7 @@ const Container = styled("div")(() => {
     backgroundColor: "#fff",
     boxShadow: "0px 5px 10px rgba(0, 0, 0, 0.3)", // Add this line for the shadow
     transition: "all 0.3s ease-in-out",
+    flexGrow: 1,
   };
 });
 

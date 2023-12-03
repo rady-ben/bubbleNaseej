@@ -31,6 +31,10 @@ export default function Conversation({
       sx={{
         transition: "all 0.3s ease-in",
         opacity,
+        flexGrow: 1,
+        paddingTop: "10px",
+        display: "flex",
+        flexDirection: "column",
       }}
     >
       <Container>
