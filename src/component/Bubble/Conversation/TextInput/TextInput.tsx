@@ -1,10 +1,12 @@
-import React from "react";
-import { Box, TextField } from "@mui/material";
+import React, { useState } from "react";
+import { Box } from "@mui/material";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import MicIcon from "@mui/icons-material/Mic";
 import InputAdornment from "@mui/material/InputAdornment";
 import NavigationIcon from "@mui/icons-material/Navigation";
+import IconButton from "@mui/material/IconButton";
 import type { DirectionType } from "../../Context";
+import OutlinedInput from "@mui/material/OutlinedInput";
 
 type Props = {
   direction?: DirectionType;
@@ -12,6 +14,8 @@ type Props = {
 };
 
 export default function TextInput({ direction, accentColor }: Props) {
+  const [text, setText] = useState("");
+
   return (
     <Box
       display="flex"
@@ -19,17 +23,23 @@ export default function TextInput({ direction, accentColor }: Props) {
       alignItems="flex-end"
       p="16px"
     >
-      <TextField
+      <OutlinedInput
         fullWidth
+        onChange={(e) => setText(e.target.value)}
         inputProps={{
           style: {
             direction: direction === "ltr" ? "ltr" : "rtl",
           },
         }}
-        InputProps={{
-          startAdornment:
-            direction === "ltr" ? null : (
-              <InputAdornment position="start">
+        startAdornment={
+          direction === "ltr" ? null : (
+            <InputAdornment position="start">
+              <IconButton
+                onClick={() => {
+                  console.log("clicked");
+                  console.log(text);
+                }}
+              >
                 <NavigationIcon
                   sx={{
                     transform: "rotate(-90deg)",
@@ -37,11 +47,19 @@ export default function TextInput({ direction, accentColor }: Props) {
                     cursor: "pointer",
                   }}
                 />
-              </InputAdornment>
-            ),
-          endAdornment:
-            direction === "rtl" ? null : (
-              <InputAdornment position="start">
+              </IconButton>
+            </InputAdornment>
+          )
+        }
+        endAdornment={
+          direction === "rtl" ? null : (
+            <InputAdornment position="start">
+              <IconButton
+                onClick={() => {
+                  console.log("clicked");
+                  console.log(text);
+                }}
+              >
                 <NavigationIcon
                   sx={{
                     transform: "rotate(90deg)",
@@ -49,9 +67,10 @@ export default function TextInput({ direction, accentColor }: Props) {
                     cursor: "pointer",
                   }}
                 />
-              </InputAdornment>
-            ),
-        }}
+              </IconButton>
+            </InputAdornment>
+          )
+        }
       />
       <Box
         height="100%"
