@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode, useState } from "react";
+import React, { ReactNode, useState, useEffect } from "react";
 import { Box } from "@mui/material";
 import Button from "./Button";
 import Conversation from "./Conversation";
@@ -18,9 +18,14 @@ type Props = {
 
 export default function Bubble({ accentColor, title, icon }: Props) {
   const [isOpened, setIsOpened] = useState(false);
+  const [lang, setLang] = useState<LangType>("en");
+  const [direction, setDirection] = useState<DirectionType>("ltr");
 
-  const lang: LangType = getLanguageCode(navigator.language) || "en";
-  const direction: DirectionType = getDirectionFromLanguage(lang) || "ltr";
+  useEffect(() => {
+    const lang = getLanguageCode(navigator.language) || "en";
+    setLang(lang);
+    setDirection(getDirectionFromLanguage(lang) || "ltr");
+  }, []);
 
   const toggle = () => setIsOpened(!isOpened);
   return (
