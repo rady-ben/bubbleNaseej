@@ -18,8 +18,8 @@ type Props = {
 
 export default function Bubble({ accentColor, title, icon }: Props) {
   const [isOpened, setIsOpened] = useState(false);
-  const [lang, setLang] = useState<LangType>("en");
-  const [direction, setDirection] = useState<DirectionType>("ltr");
+  const [lang, setLang] = useState<LangType>("unknown");
+  const [direction, setDirection] = useState<DirectionType>("unknown");
 
   useEffect(() => {
     const lang = getLanguageCode(navigator.language) || "en";
@@ -28,6 +28,11 @@ export default function Bubble({ accentColor, title, icon }: Props) {
   }, []);
 
   const toggle = () => setIsOpened(!isOpened);
+
+  if (lang === "unknown" || direction === "unknown") {
+    return null;
+  }
+
   return (
     <Context.Provider
       value={{

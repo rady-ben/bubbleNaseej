@@ -1,7 +1,7 @@
 import React from "react";
 
-type LangType = "en" | "ar";
-type DirectionType = "ltr" | "rtl";
+type LangType = "en" | "ar" | "unknown";
+type DirectionType = "ltr" | "rtl" | "unknown";
 
 type ContextType = {
   accentColor?: string;
