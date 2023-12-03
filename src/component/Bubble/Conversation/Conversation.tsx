@@ -2,6 +2,8 @@ import React, { ReactNode, useState, useEffect, useContext } from "react";
 import { Box, TextField } from "@mui/material";
 import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
 import MicIcon from "@mui/icons-material/Mic";
+import InputAdornment from "@mui/material/InputAdornment";
+import NavigationIcon from "@mui/icons-material/Navigation";
 import Container from "./Container";
 import Header from "./Header";
 import Message from "./Message";
@@ -53,6 +55,13 @@ export default function Conversation({
                 style: {
                   direction: direction === "ltr" ? "ltr" : "rtl",
                 },
+              }}
+              InputProps={{
+                startAdornment: (
+                  <InputAdornment position="start">
+                    <NavigationIcon sx={{ transform: "rotate(-90deg)" }} />
+                  </InputAdornment>
+                ),
               }}
             />
             <Box
