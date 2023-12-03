@@ -53,8 +53,8 @@ export default function Conversation({
     >
       <Container>
         <Box display="flex" flexDirection="column" width="100%" height="100%">
-          <Box flexGrow={1} maxHeight="85%" overflow="auto">
-            <Header accentColor={accentColor} title={title} icon={icon} />
+          <Header accentColor={accentColor} title={title} icon={icon} />
+          <Box flexGrow={1} maxHeight="80%" overflow="auto">
             {tempMessages?.map((message, index) => (
               <Message
                 key={index}
