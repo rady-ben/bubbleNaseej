@@ -35,11 +35,15 @@ export default function Conversation({
         paddingTop: "10px",
         display: "flex",
         flexDirection: "column",
+        maxHeight: "600px",
+        [`@media (max-width: 768px)`]: {
+          maxHeight: "100%",
+        },
       }}
     >
       <Container>
         <Box display="flex" flexDirection="column" width="100%" height="100%">
-          <Box flexGrow={1}>
+          <Box flexGrow={1} maxHeight="85%" overflow="auto">
             <Header accentColor={accentColor} title={title} icon={icon} />
             <Message accentColor={accentColor} />
             <Message accentColor={accentColor} isMine />
