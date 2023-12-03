@@ -7,14 +7,27 @@ import NavigationIcon from "@mui/icons-material/Navigation";
 import IconButton from "@mui/material/IconButton";
 import type { DirectionType } from "../../Context";
 import OutlinedInput from "@mui/material/OutlinedInput";
+import type { MessageData } from "../../Bubble";
 
 type Props = {
   direction?: DirectionType;
   accentColor?: string;
+  onValidate?: (message: MessageData) => void;
 };
 
-export default function TextInput({ direction, accentColor }: Props) {
+export default function TextInput({
+  direction,
+  accentColor,
+  onValidate,
+}: Props) {
   const [text, setText] = useState("");
+
+  const validate = () => {
+    if (onValidate) {
+      onValidate({ owner: "me", content: text });
+    }
+    setText("");
+  };
 
   return (
     <Box
@@ -25,6 +38,7 @@ export default function TextInput({ direction, accentColor }: Props) {
     >
       <OutlinedInput
         fullWidth
+        value={text}
         onChange={(e) => setText(e.target.value)}
         inputProps={{
           style: {
@@ -34,12 +48,7 @@ export default function TextInput({ direction, accentColor }: Props) {
         startAdornment={
           direction === "ltr" ? null : (
             <InputAdornment position="start">
-              <IconButton
-                onClick={() => {
-                  console.log("clicked");
-                  console.log(text);
-                }}
-              >
+              <IconButton onClick={validate}>
                 <NavigationIcon
                   sx={{
                     transform: "rotate(-90deg)",
@@ -54,12 +63,7 @@ export default function TextInput({ direction, accentColor }: Props) {
         endAdornment={
           direction === "rtl" ? null : (
             <InputAdornment position="start">
-              <IconButton
-                onClick={() => {
-                  console.log("clicked");
-                  console.log(text);
-                }}
-              >
+              <IconButton onClick={validate}>
                 <NavigationIcon
                   sx={{
                     transform: "rotate(90deg)",

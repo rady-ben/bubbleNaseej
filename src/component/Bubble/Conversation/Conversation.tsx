@@ -24,6 +24,13 @@ export default function Conversation({
 }: Props) {
   const [opacity, setOpacity] = useState(isOpened ? 1 : 0);
   const { direction } = useContext(Context);
+  const [tempMessages, setTempMessages] = useState<MessageData[] | undefined>(
+    messages
+  );
+
+  const addMessage = (message: MessageData) => {
+    setTempMessages((prev) => (prev ? [...prev, message] : [message]));
+  };
 
   useEffect(() => {
     setOpacity(isOpened ? 1 : 0);
@@ -48,7 +55,7 @@ export default function Conversation({
         <Box display="flex" flexDirection="column" width="100%" height="100%">
           <Box flexGrow={1} maxHeight="85%" overflow="auto">
             <Header accentColor={accentColor} title={title} icon={icon} />
-            {messages?.map((message, index) => (
+            {tempMessages?.map((message, index) => (
               <Message
                 key={index}
                 accentColor={accentColor}
@@ -57,7 +64,11 @@ export default function Conversation({
               />
             ))}
           </Box>
-          <TextInput direction={direction} accentColor={accentColor} />
+          <TextInput
+            direction={direction}
+            accentColor={accentColor}
+            onValidate={addMessage}
+          />
         </Box>
       </Container>
     </Box>
