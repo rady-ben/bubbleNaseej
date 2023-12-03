@@ -27,11 +27,30 @@ export default function TextInput({ direction, accentColor }: Props) {
           },
         }}
         InputProps={{
-          startAdornment: (
-            <InputAdornment position="start">
-              <NavigationIcon sx={{ transform: "rotate(-90deg)" }} />
-            </InputAdornment>
-          ),
+          startAdornment:
+            direction === "ltr" ? null : (
+              <InputAdornment position="start">
+                <NavigationIcon
+                  sx={{
+                    transform: "rotate(-90deg)",
+                    color: accentColor,
+                    cursor: "pointer",
+                  }}
+                />
+              </InputAdornment>
+            ),
+          endAdornment:
+            direction === "rtl" ? null : (
+              <InputAdornment position="start">
+                <NavigationIcon
+                  sx={{
+                    transform: "rotate(90deg)",
+                    color: accentColor,
+                    cursor: "pointer",
+                  }}
+                />
+              </InputAdornment>
+            ),
         }}
       />
       <Box
