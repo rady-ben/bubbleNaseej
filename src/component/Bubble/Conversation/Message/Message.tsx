@@ -7,9 +7,10 @@ import Context from "../../Context";
 type Props = {
   isMine?: boolean;
   accentColor?: string;
+  content: string;
 };
 
-export default function Message({ isMine, accentColor }: Props) {
+export default function Message({ isMine, accentColor, content }: Props) {
   const textVariant = isMine ? "message" : "response";
   const { direction } = useContext(Context);
   let justifyContent = "flex-start";
@@ -28,7 +29,7 @@ export default function Message({ isMine, accentColor }: Props) {
       pr="16px"
     >
       <Container isMine={isMine} accentColor={accentColor}>
-        <Text textVariant={textVariant}>Hello, I am a message, Hello</Text>
+        <Text textVariant={textVariant}>{content}</Text>
       </Container>
     </Box>
   );

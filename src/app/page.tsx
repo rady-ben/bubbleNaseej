@@ -2,6 +2,26 @@ import React from "react";
 import Bubble from "@/component/Bubble";
 import FaceIcon from "@mui/icons-material/Face";
 import { Box } from "@mui/material";
+import type { MessageData } from "@/component/Bubble/Bubble";
+
+const messages: MessageData[] = [
+  {
+    owner: "bot",
+    content: "Hello, I am a chatbot!",
+  },
+  {
+    owner: "me",
+    content: "Hi, nice to meet you!",
+  },
+  {
+    owner: "bot",
+    content: "Hello, I am a chatbot!",
+  },
+  {
+    owner: "me",
+    content: "Hi, nice to meet you!",
+  },
+];
 
 export default function Home() {
   return (
@@ -20,7 +40,12 @@ export default function Home() {
         },
       }}
     >
-      <Bubble title="" icon={<FaceIcon />} accentColor="rgb(46, 71, 93)" />
+      <Bubble
+        messages={messages}
+        title=""
+        icon={<FaceIcon />}
+        accentColor="rgb(46, 71, 93)"
+      />
     </Box>
   );
 }

@@ -10,13 +10,19 @@ import {
   DirectionType,
 } from "./utils";
 
+type MessageData = {
+  owner: string;
+  content: string;
+};
+
 type Props = {
   accentColor?: string;
   title?: string;
   icon?: ReactNode;
+  messages?: MessageData[];
 };
 
-export default function Bubble({ accentColor, title, icon }: Props) {
+export default function Bubble({ accentColor, title, icon, messages }: Props) {
   const [isOpened, setIsOpened] = useState(false);
   const [lang, setLang] = useState<LangType>("unknown");
   const [direction, setDirection] = useState<DirectionType>("unknown");
@@ -56,6 +62,7 @@ export default function Bubble({ accentColor, title, icon }: Props) {
           accentColor={accentColor}
           title={title}
           icon={icon}
+          messages={messages}
         />
         <Box
           mt={2}
@@ -73,3 +80,5 @@ export default function Bubble({ accentColor, title, icon }: Props) {
     </Context.Provider>
   );
 }
+
+export type { MessageData };

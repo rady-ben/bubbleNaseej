@@ -5,12 +5,14 @@ import Header from "./Header";
 import Message from "./Message";
 import Context from "../Context";
 import TextInput from "./TextInput";
+import type { MessageData } from "../Bubble";
 
 type Props = {
   isOpened?: boolean;
   accentColor?: string;
   title?: string;
   icon?: ReactNode;
+  messages?: MessageData[];
 };
 
 export default function Conversation({
@@ -18,6 +20,7 @@ export default function Conversation({
   accentColor,
   title,
   icon,
+  messages,
 }: Props) {
   const [opacity, setOpacity] = useState(isOpened ? 1 : 0);
   const { direction } = useContext(Context);
@@ -45,8 +48,14 @@ export default function Conversation({
         <Box display="flex" flexDirection="column" width="100%" height="100%">
           <Box flexGrow={1} maxHeight="85%" overflow="auto">
             <Header accentColor={accentColor} title={title} icon={icon} />
-            <Message accentColor={accentColor} />
-            <Message accentColor={accentColor} isMine />
+            {messages?.map((message, index) => (
+              <Message
+                key={index}
+                accentColor={accentColor}
+                isMine={message.owner === "me"}
+                content={message.content}
+              />
+            ))}
           </Box>
           <TextInput direction={direction} accentColor={accentColor} />
         </Box>
