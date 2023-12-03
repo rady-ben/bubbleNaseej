@@ -1,4 +1,10 @@
-import React, { ReactNode, useState, useEffect, useContext } from "react";
+import React, {
+  ReactNode,
+  useState,
+  useEffect,
+  useContext,
+  useRef,
+} from "react";
 import { Box } from "@mui/material";
 import Container from "./Container";
 import Header from "./Header";
@@ -27,6 +33,18 @@ export default function Conversation({
   const [tempMessages, setTempMessages] = useState<MessageData[] | undefined>(
     messages
   );
+  const boxRef = useRef(null);
+
+  const scrollToBottom = () => {
+    const currentBox = boxRef.current;
+    if (currentBox) {
+      // eslint-disable-next-line
+      (currentBox as any).scroll({
+        top: (currentBox as any).scrollHeight + 2, // eslint-disable-line
+        behavior: "smooth", // Optional for smooth scrolling
+      });
+    }
+  };
 
   const addMessage = (message: MessageData) => {
     setTempMessages((prev) => (prev ? [...prev, message] : [message]));
@@ -35,6 +53,10 @@ export default function Conversation({
   useEffect(() => {
     setOpacity(isOpened ? 1 : 0);
   }, [isOpened]);
+
+  useEffect(() => {
+    scrollToBottom();
+  }, [tempMessages]);
 
   return (
     <Box
@@ -54,7 +76,7 @@ export default function Conversation({
       <Container>
         <Box display="flex" flexDirection="column" width="100%" height="100%">
           <Header accentColor={accentColor} title={title} icon={icon} />
-          <Box flexGrow={1} maxHeight="80%" overflow="auto">
+          <Box flexGrow={1} maxHeight="80%" overflow="auto" ref={boxRef}>
             {tempMessages?.map((message, index) => (
               <Message
                 key={index}
