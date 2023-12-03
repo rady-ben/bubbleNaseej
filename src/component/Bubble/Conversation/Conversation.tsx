@@ -58,11 +58,7 @@ export default function Conversation({
               <InsertPhotoIcon
                 sx={{ color: accentColor, fontSize: "25px", cursor: "pointer" }}
               />
-              <Box
-                ml={direction === "ltr" ? "8px" : "0px"}
-                mr={direction === "rtl" ? "8px" : "0px"}
-                pt="5px"
-              >
+              <Box ml="8px" mr="8px" pt="5px">
                 <MicIcon sx={{ color: accentColor, cursor: "pointer" }} />
               </Box>
             </Box>
