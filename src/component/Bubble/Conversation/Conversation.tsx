@@ -47,7 +47,14 @@ export default function Conversation({
             alignItems="flex-end"
             p="16px"
           >
-            <TextField fullWidth />
+            <TextField
+              fullWidth
+              inputProps={{
+                style: {
+                  direction: direction === "ltr" ? "ltr" : "rtl",
+                },
+              }}
+            />
             <Box
               height="100%"
               display="flex"
