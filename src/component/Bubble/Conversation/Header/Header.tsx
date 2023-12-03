@@ -7,6 +7,8 @@ import Text from "../../Text";
 import Context, { LangType } from "../../Context";
 import CONTENT from "../../content";
 
+type ReducedLangType = Exclude<LangType, "unknown">;
+
 type Props = {
   title?: string;
   accentColor?: string;
@@ -27,7 +29,7 @@ export default function Header({ accentColor, title, icon }: Props) {
         mr={direction === "rtl" ? "10px" : "0px"}
       >
         <Text textVariant="title">
-          {title || CONTENT[lang as LangType].NASEEJ}
+          {title || CONTENT[lang as ReducedLangType].NASEEJ}
         </Text>
       </Box>
     </Container>
