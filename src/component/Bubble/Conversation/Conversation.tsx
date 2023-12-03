@@ -1,13 +1,10 @@
 import React, { ReactNode, useState, useEffect, useContext } from "react";
-import { Box, TextField } from "@mui/material";
-import InsertPhotoIcon from "@mui/icons-material/InsertPhoto";
-import MicIcon from "@mui/icons-material/Mic";
-import InputAdornment from "@mui/material/InputAdornment";
-import NavigationIcon from "@mui/icons-material/Navigation";
+import { Box } from "@mui/material";
 import Container from "./Container";
 import Header from "./Header";
 import Message from "./Message";
 import Context from "../Context";
+import TextInput from "./TextInput";
 
 type Props = {
   isOpened?: boolean;
@@ -43,42 +40,7 @@ export default function Conversation({
             <Message accentColor={accentColor} />
             <Message accentColor={accentColor} isMine />
           </Box>
-          <Box
-            display="flex"
-            flexDirection={direction === "ltr" ? "row" : "row-reverse"}
-            alignItems="flex-end"
-            p="16px"
-          >
-            <TextField
-              fullWidth
-              inputProps={{
-                style: {
-                  direction: direction === "ltr" ? "ltr" : "rtl",
-                },
-              }}
-              InputProps={{
-                startAdornment: (
-                  <InputAdornment position="start">
-                    <NavigationIcon sx={{ transform: "rotate(-90deg)" }} />
-                  </InputAdornment>
-                ),
-              }}
-            />
-            <Box
-              height="100%"
-              display="flex"
-              justifyContent="center"
-              alignItems="center"
-              ml="8px"
-            >
-              <InsertPhotoIcon
-                sx={{ color: accentColor, fontSize: "25px", cursor: "pointer" }}
-              />
-              <Box ml="8px" mr="8px" pt="5px">
-                <MicIcon sx={{ color: accentColor, cursor: "pointer" }} />
-              </Box>
-            </Box>
-          </Box>
+          <TextInput direction={direction} accentColor={accentColor} />
         </Box>
       </Container>
     </Box>
